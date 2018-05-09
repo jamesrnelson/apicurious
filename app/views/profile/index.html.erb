@@ -1,0 +1,7 @@
+<p><%= image_tag asset_path @user_info.avatar %></p>
+<h1><%= @user_info.name %></h1>
+<h1><%= @user_info.nickname %></h1>
+<h5>Repositories: <%= link_to @user_info.repos, repos_path %></h5>
+<h5>Stars: <%= link_to @user_info.starred, starred_path %></h5>
+<h5>Followers: <%= link_to @user_info.followers, followers_path %></h5>
+<h5>Following: <%= link_to @user_info.following, following_path %></h5>
