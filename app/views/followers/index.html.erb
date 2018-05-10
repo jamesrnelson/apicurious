@@ -1,0 +1,7 @@
+<h1>Followers <%= @github_followers.other_github_users.length %></h1>
+<% @github_followers.other_github_users.each do |github_user| %>
+  <p>
+    <%= image_tag asset_path github_user.avatar %>
+    <%= github_user.name %>
+  </p>
+<% end %>
