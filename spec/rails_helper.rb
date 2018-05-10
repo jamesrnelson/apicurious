@@ -68,7 +68,7 @@ def stub_omniauth
     provider: 'github',
     uid: '1234',
     info: {
-        nickname: 'joeschmoe',
+      nickname: 'joeschmoe',
     },
     credentials: {
       token: 'github_token'
@@ -77,17 +77,7 @@ def stub_omniauth
 end
 
 def stub_logged_in
-  OmniAuth.config.test_mode = true
-  OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
-    provider: 'github',
-    uid: '1234',
-    info: {
-        nickname: 'joeschmoe',
-    },
-    credentials: {
-      token: 'github_token'
-    }
-  })
+  stub_omniauth
 
   visit root_path
 

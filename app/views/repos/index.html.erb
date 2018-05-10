@@ -1,0 +1,6 @@
+<h1>Repositories <%= @github_repos.user_repos.length %></h1>
+<% @github_repos.user_repos.each do |repo| %>
+  <h3><%= repo.name %></h3>
+  <p><%= repo.description %></p>
+  <p><%= "#{repo.language} #{repo.forks_count} #{repo.stargazers_count}" %></p>
+<% end %>

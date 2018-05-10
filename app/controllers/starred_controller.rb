@@ -1,5 +1,5 @@
 class StarredController < ApplicationController
   def index
-    @github_starred = GitHubStarred.new(current_user.screen_name, session[:token])
+    @github_starred = GithubConnection.new(current_user.screen_name, '/starred', session[:token])
   end
 end

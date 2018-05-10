@@ -1,5 +1,5 @@
 class FollowersController < ApplicationController
   def index
-    @github_followers = GithubFollowers.new(current_user.screen_name, session[:token])
+    @github_followers = GithubConnection.new(current_user.screen_name, '/followers', session[:token])
   end
 end
