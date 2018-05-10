@@ -43,29 +43,14 @@ class UserInfo
   end
 
   def starred
-    connection('/starred')
-    # response.count
+    starred_connection.count
   end
 
-
-
-  # def following
-  #   connection('/following')
-  # end
-  #
-  # def followers
-  #   connection('/followers')
-  # end
-  #
-  # def starred_repos
-  #   connection('/starred')
-  # end
-  #
-  # def repos
-  #   connection('/repos')
-  # end
-  #
-  # def organizations
-  #   connection('/orgs')
-  # end
+  def starred_connection
+    connection = Faraday.new(url: "https://api.github.com/users/#{@screen_name}/starred")
+    response = connection.get do |req|
+      req.headers['Authorization'] = @token
+    end
+    JSON.parse(response.body, symbolize_names: true)
+  end
 end
