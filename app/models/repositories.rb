@@ -1,14 +1,14 @@
-class Following
-  def initialize(screen_name, token)
+class Repositories
+  def initialize(screen_name, token, path)
     @screen_name = screen_name
     @token = token
-    @path = '/following'
+    @path = path
   end
 
-  def other_github_users
-    raw_users = service.raw_search
-    raw_users.map do |user|
-      OtherGithubUser.new(user)
+  def user_repos
+    raw_repos = service.raw_search
+    raw_repos.map do |repo|
+      Repo.new(repo)
     end
   end
 
