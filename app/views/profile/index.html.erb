@@ -10,9 +10,18 @@
       <%= render partial: 'layouts/inner_nav'%>
 
       <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <h5 class="card-title">Pinned Repositories</h5>
+        <% @github_repos.user_repos.take(6).each do |repo| %>
+        <div class="card-deck">
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title"><%= repo.name %></h5>
+              <h6 class="card-subtitle mb-2 text-muted"><%= repo.description %></h6>
+              <p class="card-text"><%= "#{repo.language} #{repo.forks_count} #{repo.stargazers_count}" %></p>
+            </div>
+          </div>
+        </div>
+        <% end %>
       </div>
     </div>
   </div>
