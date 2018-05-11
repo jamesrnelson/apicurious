@@ -2,17 +2,20 @@
   <div class="col-lg-1">
   </div>
   <div class="col-lg-4">
-    <img class="img-thumbnail" src="<%= "#{@user_info.avatar}/64x64" %>" alt="<%= "#{@user_info.name}'s avatar" %>" style="width:300px">
-    <h2><%= @user_info.name %></h2>
-    <h3><%= @user_info.nickname %></h3>
+    <%= render partial: 'layouts/profile_info' %>
   </div>
-  <div class="col-lg-4">
-    <h5>Repositories: <%= link_to @user_info.repos, repos_path %></h5>
-    <h5>Stars: <%= link_to @user_info.starred, starred_path %></h5>
-    <h5>Followers: <%= link_to @user_info.followers, followers_path %></h5>
-    <h5>Following: <%= link_to @user_info.following, following_path %></h5>
+
+  <div class="col-lg-6">
+    <div class="card text-center">
+      <%= render partial: 'layouts/inner_nav'%>
+
+      <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
   </div>
   <div class="col-lg-3">
-
   </div>
 </div>

@@ -1,5 +1,6 @@
 class ProfileController < ApplicationController
   def index
-    @user_info = UserInfo.new(current_user.screen_name, session[:token])
+    session[:github_user] = params[:github_user]
+    @user_info = UserInfo.new(session[:github_user], session[:token])
   end
 end

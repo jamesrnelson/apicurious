@@ -1,0 +1,16 @@
+<div class="card-header">
+  <ul class="nav nav-tabs card-header-tabs">
+    <li class="nav-item">
+      <%= link_to "Repositories #{@user_info.repos}", repos_path, class: "nav-link active" %>
+    </li>
+    <li class="nav-item">
+      <%= link_to "Stars #{@user_info.starred}", starred_path, class: "nav-link active" %>
+    </li>
+    <li class="nav-item">
+      <%= link_to "Followers #{@user_info.followers}", followers_path, class: "nav-link active" %>
+    </li>
+    <li class="nav-item">
+      <%= link_to "Following #{@user_info.following}", following_path, class: "nav-link active" %>
+    </li>
+  </ul>
+</div>

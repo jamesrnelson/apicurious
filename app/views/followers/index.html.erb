@@ -1,15 +1,28 @@
 <div class="row">
-  <div class="col-lg-4">
+  <div class="col-lg-1">
   </div>
-  <div class="col-lg-8">
-    <h3>Followers <%= @github_followers.other_github_users.length %></h3>
-    <% @github_followers.other_github_users.each do |github_user| %>
-    <div class="media">
-      <img class="img-thumbnail" src="<%= "#{github_user.avatar}/64x64" %>" alt="<%= "#{github_user.name}'s avatar" %>" style="width:64px">
-      <div class="media-body">
-        <h5 class="mt-0"><%= link_to github_user.name, profile_path %></h5>
+  <div class="col-lg-4">
+    <%= render partial: 'layouts/profile_info' %>
+  </div>
+  <div class="col-lg-6">
+    <div class="card text-center">
+      <%= render partial: 'layouts/inner_nav' %>
+      <div class="card-body">
+        <% @github_followers.other_github_users.each do |github_user| %>
+        <div class="card">
+          <div class="card-body">
+            <div class="media">
+              <img class="img-thumbnail" src="<%= "#{github_user.avatar}/64x64" %>" alt="<%= "#{github_user.name}'s avatar" %>" style="width:64px">
+              <div class="media-body">
+                <h5 class="mt-0"><%= link_to github_user.name, profile_path(github_user: github_user.name) %></h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% end %>
       </div>
     </div>
-    <% end %>
+  </div>
+  <div class="col-lg-2">
   </div>
 </div>
