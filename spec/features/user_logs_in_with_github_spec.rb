@@ -8,7 +8,9 @@ describe 'APICurious Logging in' do
       visit root_path
       expect(page.status_code).to eq(200)
 
-      click_link 'Sign in with GitHub'
+      within '.navbar' do
+        click_link 'Sign in with GitHub'
+      end
       expect(current_path).to eq(root_path)
     end
   end

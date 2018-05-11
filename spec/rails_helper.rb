@@ -68,10 +68,10 @@ def stub_omniauth
     provider: 'github',
     uid: '1234',
     info: {
-      nickname: 'joeschmoe',
+      nickname: 'jamesrnelson',
     },
     credentials: {
-      token: 'github_token'
+      token: ENV['github_api_key']
     }
   })
 end
@@ -81,5 +81,7 @@ def stub_logged_in
 
   visit root_path
 
-  click_on 'Sign in with GitHub'
+  within '.navbar' do
+    click_link 'Sign in with GitHub'
+  end
 end
