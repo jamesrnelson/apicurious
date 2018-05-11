@@ -1,7 +1,15 @@
-<h1>Followers <%= @github_followers.other_github_users.length %></h1>
-<% @github_followers.other_github_users.each do |github_user| %>
-  <p>
-    <%= image_tag asset_path github_user.avatar %>
-    <%= github_user.name %>
-  </p>
-<% end %>
+<div class="row">
+  <div class="col-lg-4">
+  </div>
+  <div class="col-lg-8">
+    <h3>Followers <%= @github_followers.other_github_users.length %></h3>
+    <% @github_followers.other_github_users.each do |github_user| %>
+    <div class="media">
+      <img class="img-thumbnail" src="<%= "#{github_user.avatar}/64x64" %>" alt="<%= "#{github_user.name}'s avatar" %>" style="width:64px">
+      <div class="media-body">
+        <h5 class="mt-0"><%= link_to github_user.name, profile_path %></h5>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
