@@ -18,7 +18,7 @@ class GithubConnectionService
 
     def response
       connection.get do |req|
-        req.headers['Authorization'] = @token
+        req.headers['Authorization'] = "token #{@token}"
       end
     end
 end

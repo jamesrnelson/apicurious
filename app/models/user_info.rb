@@ -4,53 +4,42 @@ class UserInfo
     @token = token
   end
 
-  def connection(path = nil)
-    Faraday.new(url: "https://api.github.com/users/#{@screen_name}#{path}")
-  end
-
-  def response
-    @response ||= connection.get do |req|
-      req.headers['Authorization'] = @token
-    end
-  end
-
-  def raw_search
-    JSON.parse(response.body, symbolize_names: true)
-  end
-
   def avatar
-    raw_search[:avatar_url]
+    service1.raw_search[:avatar_url]
   end
 
   def following
-    raw_search[:following]
+    service1.raw_search[:following]
   end
 
   def followers
-    raw_search[:followers]
+    service1.raw_search[:followers]
   end
 
   def repos
-    raw_search[:public_repos]
+    service1.raw_search[:public_repos]
   end
 
   def name
-    raw_search[:name]
+    service1.raw_search[:name]
   end
 
   def nickname
-    raw_search[:login]
+    service1.raw_search[:login]
   end
 
   def starred
-    starred_connection.count
+    service2.raw_search.count
   end
 
-  def starred_connection
-    connection = Faraday.new(url: "https://api.github.com/users/#{@screen_name}/starred")
-    response = connection.get do |req|
-      req.headers['Authorization'] = @token
+  private
+    attr_reader :screen_name, :token
+
+    def service1
+      @service1 ||= GithubConnectionService.new(screen_name, path = nil, token)
     end
-    JSON.parse(response.body, symbolize_names: true)
-  end
+
+    def service2
+      @service2 ||= GithubConnectionService.new(screen_name, '/starred', token)
+    end
 end
